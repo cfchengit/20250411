@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>作品集</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script src="libraries/p5.min.js"></script>
+    <script src="sketch.js"></script>
+  </head>
+
+  <body>
+    <!-- 選單 -->
+    <ul class="menu" id="menu">
+      <li><a href="#" onclick="hideIframe()">首頁</a></li>
+      <li><a href="#">自我介紹</a></li>
+      <li class="dropdown">
+        <a href="#">作品集</a>
+        <ul class="submenu">
+          <li><a href="#" onclick="loadIframe('https://cfchengit.github.io/20250304/')">第一周</a></li>
+          <li><a href="#" onclick="loadIframe('https://cfchengit.github.io/2025_mid/')">第二周</a></li>
+          <li><a href="#" onclick="loadIframe('https://hackmd.io/@cfchen/S1xdlbl0Jl')">第三周</a></li>
+          <li><a href="#">第四周</a></li>
+        </ul>
+      </li>
+      <li><a href="#">測驗卷</a></li>
+      <li><a href="#">教學影片</a></li>
+    </ul>
+
+    <!-- iframe -->
+    <iframe id="content-frame" src="" frameborder="0" style="display: none;"></iframe>
+  </body>
+
+  <script>
+    // 動態載入 iframe 網頁
+    function loadIframe(url) {
+      const iframe = document.getElementById('content-frame');
+      iframe.style.display = 'block'; // 顯示 iframe
+      iframe.src = url;
+    }
+
+    // 隱藏 iframe
+    function hideIframe() {
+      const iframe = document.getElementById('content-frame');
+      iframe.style.display = 'none'; // 隱藏 iframe
+      iframe.src = ''; // 清空 iframe 的內容
+    }
+
+    // 控制選單顯示與隱藏（滑入滑出效果）
+    document.addEventListener('mousemove', (event) => {
+      const menu = document.getElementById('menu');
+      if (event.clientY < 250) {
+        menu.classList.add('show'); // 顯示選單
+        menu.classList.remove('hide');
+      } else {
+        menu.classList.add('hide'); // 隱藏選單
+        menu.classList.remove('show');
+      }
+    });
+  </script>
+</html>
